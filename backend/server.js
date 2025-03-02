@@ -1,10 +1,15 @@
-const express = require('express');
-const app = express();
+// server.js kyun banaya? 
+// kyunki ham socket IO user karne wale hain jo http module se use karne easy padta hain express ki bajay.
+import dotenv from 'dotenv';
+dotenv.config();
+import http from 'http';
+import app from "./app.js";
 
-app.get('/', (req, res) => {
-  res.send('Hello World');
-});
+const server = http.createServer(app);
 
-app.listen(3000, () => {
-  console.log('Server is running on port 3000');
+
+const PORT = process.env.PORT || 3000;
+
+server.listen(PORT,(req,res)=>{
+    console.log(`Server is running on port ${PORT}`);
 });
